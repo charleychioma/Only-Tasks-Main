@@ -1,0 +1,23 @@
+{{!Dashboard:
+1. all posts by user, can click single post and then edit/delete it, and then brought back to updated dashboard
+2. button to add new post brings to new post page
+3. new post: input for title and contents
+4. After pressing create button, brought back to dashboard page and see new post too
+}}
+
+<!-- Loop over each object in the posts array -->
+<h2 style="text-align: center">My Posts</h2>
+{{#each posts as |post|}}
+<div class="post-container">
+    <h2>{{post.title}}</h2>
+    <h3>Created on {{format_date post.date_created}}</h3>
+    <p>{{post.contents}}</p>
+    <button>edit</button>
+    <button>delete</button>
+</div>
+{{/each}}
+<div class="button-div">
+<button onclick="window.location.href='/new-post';">New post</button>
+</div>
+
+<script src="./js/dashboard.js"></script>

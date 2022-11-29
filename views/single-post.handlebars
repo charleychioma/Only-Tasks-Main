@@ -1,0 +1,39 @@
+<div>
+    <div class="post-container">
+        <h2>{{title}}</h2>
+        <h3>Created by {{user.username}} on {{format_date date_created}}</h3>
+        <p>{{contents}}</p>
+    </div>
+
+    <div class = "comments">
+    <h4>Comments</h4>
+    {{!view all of the post's comments --}}
+    {{#if comments.length}}
+    {{#each comments as |comment|}}
+    {{!-- Username and date created aren't showing up --}}
+    <p>{{comment.comment}} by {{user.username}} on {{comment.date_created}}</p>
+    {{/each}}
+    </div>
+    {{/if}}
+</div>
+
+
+
+{{!-- Need the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in,
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date
+created --}}
+{{#if logged_in}}
+<div class="comment-box-div">
+    <h3> Add a Comment</h3>
+    <input type="text" id="comment-box-input" />
+    <div class="button-div">
+    <button>submit</button>
+    </div>
+</div>
+{{else}}
+<p class="login-to-comment">Login to comment</p>
+<div class="button-div">
+    <button onclick="window.location.href='/login';">login</button>
+</div>
+{{/if}}
