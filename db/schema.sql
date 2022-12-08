@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS office_task_manager;
+DROP DATABASE IF EXISTS only_tasks;
 
-CREATE DATABASE office_task_manager;
+CREATE DATABASE only_tasks;

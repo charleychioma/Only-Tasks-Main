@@ -22,23 +22,23 @@ Task.init(
             allowNull: false
         },
         
-        manager_id : {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'manager',
-                key: 'id'
-            }
-        },
+        // manager_id : {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'manager',
+        //         key: 'id'
+        //     }
+        // },
 
-        employee_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'employee',
-                key: 'id'
-            }
-        }
+        // employee_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'employee',
+        //         key: 'id'
+        //     }
+        // }
     },
 
     {

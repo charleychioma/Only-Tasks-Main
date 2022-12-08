@@ -2,6 +2,7 @@ const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
+//bcrypt used for password incryption
 class Manager extends Model {
     checkPassword(loginPw)
     {
@@ -48,6 +49,7 @@ Manager.init(
     },
 
     {
+        //hooks to execute the password encryption becore creating and updating users
         hooks: {
             
             async beforeCreate(newUserData)

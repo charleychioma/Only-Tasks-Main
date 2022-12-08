@@ -1,0 +1,16 @@
+<!--Displays all available tasks for the logged in employee-->
+{{#if tasks.length}}
+<section>
+  <h2>Your Tasks</h2>
+  <ol>
+    {{#each tasks as |task|}}
+    <li>
+      {{> task-info task}}
+      <a href="/employee-dashboard/edit/{{task.id}}" class="edit-link">Complete Task</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<a href="/employee-dashboard/add"><button>Create Task</button></a>

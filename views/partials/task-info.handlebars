@@ -1,0 +1,13 @@
+<!--Displays a single task with related info-->
+<article class="task">
+      <div class="title">
+        <h3>{{title}}</h3>
+        <h4>Deadline: {{format_date deadline}}</h4>
+      </div>
+    
+    <div class="meta">
+        <h5>Created At: {{format_date created_at}}</h5>
+        <h5>Manager: {{manager.first_name}} {{manager.last_name}}</h5>
+        <h5>Employee: {{employee.first_name}} {{employee.last_name}}</h5>
+    </div>
+    </article>

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const {Employee, Task} = require('../../models');
+const employeeAuth = require('../../utils/employeeAuth');
 
+//gets all employee objects
 router.get('/',(req, res)=>{
     Employee.findAll({
       attributes:{exclude: ['password']}
@@ -12,6 +14,7 @@ router.get('/',(req, res)=>{
         });
 });
 
+//gets one employee object
 router.get('/:id', (req, res) => {
     Employee.findOne({
       attributes:{exclude: ['password']},
@@ -38,6 +41,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
+//creates a new employee object
 router.post('/',(req,res)=>{
     Employee.create({
         first_name: req.body.first_name,
@@ -45,13 +49,18 @@ router.post('/',(req,res)=>{
         email: req.body.email,
         password: req.body.password
       })
-        .then(dbUserData => res.json(dbUserData))
-        .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
+      .then(dbUserData => {
+        req.session.save(() => {
+          req.session.employee_id = dbUserData.id;
+          req.session.email = dbUserData.email;
+          req.session.loggedIn = true;
+      
+          res.json(dbUserData);
         });
+      })
 });
 
+//log in as an existing employee and create a new session upon successful log in
 router.post('/login', (req,res)=>{
   Employee.findOne({
     where: {
@@ -70,12 +79,29 @@ router.post('/login', (req,res)=>{
       return;
     }
 
+    req.session.save(() => {
+      req.session.employee_id = dbUserData.id;
+      req.session.email = dbUserData.email;
+      req.session.loggedIn = true;
     res.json({user: dbUserData, message: 'Logged in!'});
-
+    });
   });
 });
 
-router.put('/:id',(req,res)=>{
+//destroys the current session
+router.post('/logout',(req,res)=>{
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
+//updates an employee objects with middleware that checks for authentication
+router.put('/:id',employeeAuth,(req,res)=>{
     Employee.update(req.body, {
         individualHooks: true,
         where: {
@@ -95,6 +121,7 @@ router.put('/:id',(req,res)=>{
         });
 });
 
+//deletes employee object
 router.delete('/:id', (req, res) => {
     Employee.destroy({
         where: {

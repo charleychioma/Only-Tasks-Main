@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyTasks</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<!--Main page displays manager login by default, provides a link to the employee login page-->
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a href="/">OnlyTasks</a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+          <a href="/employee-dashboard">dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
+        <a href ="/login">Login</a>
+        <br>
+        <a href ="/employee-login">Team Member Login</a>
+        
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+      Thanks for visiting!
+    </footer>
+  </div>
+
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+</body>
+
+</html>

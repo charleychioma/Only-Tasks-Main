@@ -11,28 +11,12 @@
       <label for="deadline">Deadline</label>
       <input type="date" id="deadline" name="deadline" />
     </div>
-    {{!-- <div>
+    <div>
       <label for="employee_id">Assign to Employee</label>
       <input type="number" id="employee_id" name="employee_id" />
-    </div> --}}
+    </div>
     <button type="submit" class="btn">Create</button>
   </form>
 </section>
 
-{{!-- <!--Displayes all tasks made by the logged in manager-->
-{{#if tasks.length}}
-<section>
-  <h2>Your Tasks</h2>
-  <ol>
-    {{#each tasks as |task|}}
-    <li>
-      {{> task-info task}}
-      <a href="/dashboard/edit/{{task.id}}" class="edit-link">Edit Task</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}} --}}
-
-
-<script src = "/javascript/add-task.js"></script>
+<script src="/javascript/add-task.js"></script>

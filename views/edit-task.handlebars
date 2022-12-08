@@ -1,0 +1,20 @@
+<!--Task eidt form for managers-->
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit Task
+  </h2>
+  <form class="edit-task-form">
+    <div>
+      <input name="task-title" type="text" value="{{task.title}}" />
+      <input type="date" name="deadline" value="{{format_date task.deadline}}" />
+      <input type="number" name="employee_id" value="{{task.employee_id}}"/>
+    </div>
+
+    <button type="submit">Save Task</button>
+    <button type="button" class="delete-task-btn">Delete Task</button>
+  </form>
+</article>
+
+<script src="/javascript/edit-task.js"></script>
+<script src="/javascript/delete-task.js"></script>

@@ -1,0 +1,8 @@
+<!-- Takes all available tasks and displays them as list-->
+<ol class="task-list">
+    {{#each tasks as |task|}}
+  <li>
+    {{>task-info task}}
+  </li>
+  {{/each}}
+</ol>
