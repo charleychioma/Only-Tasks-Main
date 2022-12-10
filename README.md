@@ -26,9 +26,6 @@ Clone the repo and then upon navigating to the cloned directory, run "npm i," in
 ## Usage
 For a business in which employees with team member credentials. Upon completion of a task, team members can mark them as complete. Manager accounts have been obsolete due to a lack of Javascript. Only team member account are of use . The employees account credentials can be used to log in, create tasks and assign them to various employee account.
 
-![alt text](./screenshots/login.png)
-![alt text](./screenshots/manager.png)
-
 ## Heroku 
 https://onlytasks.herokuapp.com/login
 
