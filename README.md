@@ -34,10 +34,11 @@ https://onlytasks.herokuapp.com/login
 
 
 ## Contribution
+Mohammad Likon Hassan
 Charley Chioma Ukwubiwe
 
 ## Tests
-Run npm test to run a test for the date format function.
+Run "npm test" to run a test for the date format function.
 
 ## Questions
 GitHub: https://github.com/charleychioma 
